@@ -1,31 +1,37 @@
 <script>
 import Table from '../components/Table.vue';
+import Table2 from '../components/Table2.vue';
 import { mapActions, mapWritableState } from 'pinia';
 import {useAppStore} from '../stores/app.js';
 
 export default {
     components: {
-        Table
+        Table,
+        Table2
     },
 
     computed:{
         // ...mapState(useAppStore, ['Title'])
-        ...mapWritableState(useAppStore, ['Title', 'Data'])
+        ...mapWritableState(useAppStore, ['Title', 'Data','dataAsset'])
     },
 
     methods:{
-        ...mapActions(useAppStore,['fetchData']),
+        ...mapActions(useAppStore,['fetchDataAsset']),
 
     },
+
+    created(){
+        this.fetchDataAsset()
+    }
 }
 </script>
 
 <template>
   <div>
-    {{ Title }}
     
     <h1>Home</h1>
-    <Table/>
+    <!-- <Table/> -->
+    <Table2 />
     <button @click="fetchData">{{ Data }}</button>
   </div>
 </template>
