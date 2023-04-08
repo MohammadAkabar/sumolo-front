@@ -4,8 +4,9 @@ export const useAppStore = defineStore('app', {
     state: () => ({
         Title: 'ini tittle', //state
         Data: 0,
-        dataAsset: []
-
+        dataAsset: [],
+        token:[],
+        role:[],
     }),
     actions: {
         async fetchData(){
@@ -22,14 +23,30 @@ export const useAppStore = defineStore('app', {
                 })
 
                 localStorage.setItem('access_token', data.access_token)
-
+                localStorage.setItem('role', data.role)
+                this.token=localStorage.getItem('access_token')
+                this.role=localStorage.getItem('role')
+                this.router.push('/')
+                Swal.fire({
+                    icon: 'success',
+                    text: 'Loggin Success',      
+                  })
             } catch (error) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Wrong Email/Password ',
+                    footer: '<a href="">Why do I have this issue?</a>'
+                  })
                 console.log(error)
             }
         },
+
         async logout(){
-            localStorage.removeItem('access_token')     
-            this.router.push('/login');
+            localStorage.clear()
+            this.token=null;
+            this.role=null;
+            this.router.push('/Login')
         },
 
         async fetchDataAsset(){

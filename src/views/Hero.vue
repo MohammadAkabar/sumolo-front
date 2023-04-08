@@ -25,7 +25,7 @@ export default {}
         </div>
         <div class="col-lg-6 order-1 order-lg-2">
           <img
-            src="assets/img/hero-img.svg"
+            src="../assets/img/hero-img.svg"
             class="img-fluid"
             alt=""
             data-aos="zoom-out"
