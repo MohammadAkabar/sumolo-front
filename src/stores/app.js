@@ -4,7 +4,7 @@ export const useAppStore = defineStore('app', {
     state: () => ({
         Title: 'ini tittle', //state
         Data: 0,
-        dataAsset: [],
+        dataAsset: [], 
         token:[],
         role:[],
     }),
@@ -19,13 +19,13 @@ export const useAppStore = defineStore('app', {
                 const {data}= await axios({
                     method: 'POST',
                     url: 'http://localhost:3000/login', //url backend
-                     data:form //req.body
+                    data:form //req.body
                 })
 
                 localStorage.setItem('access_token', data.access_token)
                 localStorage.setItem('role', data.role)
                 this.token=localStorage.getItem('access_token')
-                this.role=localStorage.getItem('role')
+                this.role=localStorage.getItem('role') 
                 this.router.push('/')
                 Swal.fire({
                     icon: 'success',

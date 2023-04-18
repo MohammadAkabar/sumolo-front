@@ -29,6 +29,7 @@ export default {
   }
 }
 </script>
+
 <template>
   <header id="header" class="header d-flex align-items-center">
 
@@ -36,33 +37,20 @@ export default {
       <a href="index.html" class="logo d-flex align-items-center">
         <!-- Uncomment the line below if you also wish to use an image logo -->
         <!-- <img src="assets/img/logo.png" alt=""> -->
-        <h1>Impact<span>.</span></h1>
+        <h1>Sumolo<span>.</span></h1>
       </a>
       <nav id="navbar" class="navbar">
         <ul>
           <li><a href="#hero">Home</a></li>
           <lza></lza>
-          <li><a href="#services">Services</a></li>
-          <li><a href="#portfolio">Portfolio</a></li>
-          <li><a href="#team">Team</a></li>
-          <li><a href="blog.html">Blog</a></li>
-          <li class="dropdown"><a href="#"><span>Drop Down</span> <i
-                class="bi bi-chevron-down dropdown-indicator"></i></a>
+          <li><a href="#services">Blog</a></li>
+          <li><a href="blog.html">Services</a></li>
+          <li class="dropdown"><a href="#"><span>Payment</span><i class="bi bi-chevron-down dropdown-indicator"></i></a>
             <ul>
-              <li><a href="#">Drop Down 1</a></li>
-              <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i
-                    class="bi bi-chevron-down dropdown-indicator"></i></a>
-                <ul>
-                  <li><a href="#">Deep Drop Down 1</a></li>
-                  <li><a href="#">Deep Drop Down 2</a></li>
-                  <li><a href="#">Deep Drop Down 3</a></li>
-                  <li><a href="#">Deep Drop Down 4</a></li>
-                  <li><a href="#">Deep Drop Down 5</a></li>
-                </ul>
-              </li>
-              <li><a href="#">Drop Down 2</a></li>
-              <li><a href="#">Drop Down 3</a></li>
-              <li><a href="#">Drop Down 4</a></li>
+              <li><a href="#">Data Penerima wakaf</a></li>
+              <li><a href="#"></a></li>
+              <li><a href="#">Ranking penyewa</a></li>
+              <li><a href="#" v-if="rolee==='admin'">Laporan Keuangan</a></li>
             </ul>
           </li>
           <li>
