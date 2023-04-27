@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../views/Home.vue'
 import About from '../views/About.vue'
-import Login from '../views/Login.vue'
+import Login from '../views/LoginPage.vue'
 import Dashboard from '../views/Dashboard.vue'
 
 const router = createRouter({
@@ -9,25 +9,26 @@ const router = createRouter({
   routes: [
     {
       path: '/',
-      component: Home,
+      component: Home
     },
     {
       path: '/About',
-      component: About,
+      component: About
     },
     {
       path: '/login',
-      component: Login,
+      component: Login
     },
     {
       path: '/Admin',
-      component: Dashboard,
+      component: Dashboard
     }
   ]
 })
 //to Url, from url,next url
-router.beforeEach((to, _, next) => { //navguard
-  const isLogin = !!localStorage.getItem('access_token');
+router.beforeEach((to, _, next) => {
+  //navguard
+  const isLogin = !!localStorage.getItem('access_token')
   const title = to.meta.title
 
   if (title) {
@@ -36,13 +37,11 @@ router.beforeEach((to, _, next) => { //navguard
     document.title = 'Sumolo'
   }
 
-
   if (isLogin && to.path === '/Login') {
     next('/')
   } else if (!isLogin && to.path !== '/Login') {
     next('/login')
-  }
-  else {
+  } else {
     next()
   }
 })
