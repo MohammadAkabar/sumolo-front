@@ -1,23 +1,24 @@
 <script>
-import Hero from './Hero.vue'
-
+import Hero from '../components/Home/Hero.vue'
 import AssetItems from '../components/AssetItems.vue'
-import Programs from '../components/Programs.vue'
 
 export default {
   components: {
     //addComponents
     Hero,
-    AssetItems,
-    Programs
+    AssetItems
   }
 }
 </script>
 
 <template>
+  <!-- hero section -->
   <Hero />
+  <!-- end hero section -->
+
+  <!-- asset items section -->
   <main id="main">
-    <AssetItems />
+    <AssetItems :isAll="false" />
   </main>
   <!-- End #main -->
 
@@ -91,7 +92,4 @@ export default {
     </div>
   </footer>
   <!-- End Footer -->
-  <Programs />
 </template>
-
-<style scoped></style>

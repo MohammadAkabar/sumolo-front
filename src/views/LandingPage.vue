@@ -1,9 +1,12 @@
 <script>
 import Hero from './Hero.vue'
-export default {}
+export default {
+  component: {
+    Hero
+  }
+}
 </script>
 <template>
 
   <Hero />
 </template>
-<style></style>

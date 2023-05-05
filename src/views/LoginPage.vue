@@ -1,6 +1,6 @@
 <script>
 import { mapActions } from 'pinia'
-import { useAppStore } from '../stores/app'
+import { useAuthStore } from '../stores/auth'
 
 export default {
   data() {
@@ -16,7 +16,7 @@ export default {
     //globalVariables sebede e store
   },
   methods: {
-    ...mapActions(useAppStore, ['login']),
+    ...mapActions(useAuthStore, ['login']),
     doLogin() {
       this.login(this.form)
     }
@@ -38,12 +38,8 @@ export default {
         <label class="form-label" for="form1Example2">Password</label>
       </div>
 
-      <!-- 2 column grid layout for inline styling -->
-
       <!-- Submit button -->
-      <button type="submit" class="btn btn-primary btn-block">Sign in</button>
+      <button type="submit" class="btn btn-primary btn-block">Log in</button>
     </form>
   </div>
 </template>
-
-<style></style>
