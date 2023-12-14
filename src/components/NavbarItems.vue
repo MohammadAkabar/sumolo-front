@@ -4,11 +4,12 @@ import { useAuthStore } from '../stores/auth'
 
 export default {
   computed: {
-    ...mapWritableState(useAuthStore, ['token', 'role'])
+    ...mapWritableState(useAuthStore, ['token', 'role', 'id'])
   },
   data() {
     return {
-      role: ''
+      role: '',
+      id: localStorage.id
     }
   },
 
@@ -44,7 +45,7 @@ export default {
               ><span>Services</span><i class="bi bi-chevron-down dropdown-indicator"></i
             ></a>
             <ul>
-              <li><a href="#">Asset</a></li>
+              <li><a :href="`/DetailAsset/${id}`">My Asset</a></li>
               <li><a href="#">Wakaf</a></li>
               <li><a href="#">Pembayaran</a></li>
               <li><a href="#">Blog</a></li>

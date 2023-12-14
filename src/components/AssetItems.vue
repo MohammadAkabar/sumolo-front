@@ -24,16 +24,11 @@ export default {
 </script>
 <template>
   <section id="recent-posts" class="recent-posts sections-bg mt-4">
-    <div class="container" data-aos="fade-up">
+    <div id="" class="container" data-aos="fade-up">
       <div class="section-header">
-        <h2>Assets</h2>
-        <p>
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Enim aut dignissimos quos
-          temporibus mollitia in quam amet nulla maiores fugit! Soluta temporibus quidem maiores ad
-          excepturi nemo rem non eveniet!
-        </p>
+        <h2>Aset</h2>
+        <p>Merupakan Aset Yayasan Panembahan sumolo</p>
       </div>
-
       <div v-if="isAll === false" class="row gy-4">
         <div v-for="(item, index) in dataAsset.slice(0, 3)" :key="index" class="col-xl-4 col-md-6">
           <article>
@@ -62,7 +57,6 @@ export default {
                 >
                   Detail {{ item.id }}
                 </button>
-                >
               </div>
             </div>
           </article>
@@ -101,7 +95,6 @@ export default {
                 >
                   Detail {{ item.id }}
                 </button>
-                >
               </div>
             </div>
           </article>

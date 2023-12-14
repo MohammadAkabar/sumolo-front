@@ -1,11 +1,13 @@
 <script>
-import Hero from '../components/Home/Hero.vue'
+import Hero from '../components/Home/HeroItems.vue'
 import AssetItems from '../components/AssetItems.vue'
+import AboutSection from '../components/AboutSection.vue'
 
 export default {
   components: {
     //addComponents
     Hero,
+    AboutSection,
     AssetItems
   }
 }
@@ -15,7 +17,7 @@ export default {
   <!-- hero section -->
   <Hero />
   <!-- end hero section -->
-
+  <AboutSection />
   <!-- asset items section -->
   <main id="main">
     <AssetItems :isAll="false" />
@@ -28,11 +30,12 @@ export default {
       <div class="row gy-4">
         <div class="col-lg-5 col-md-12 footer-info">
           <a href="index.html" class="logo d-flex align-items-center">
-            <span>Impact</span>
+            <span>Penambahan Sumolo</span>
           </a>
           <p>
-            Cras fermentum odio eu feugiat lide par naso tierra. Justo eget nada terra videa magna
-            derita valies darta donna mare fermentum iaculis eu non diam phasellus.
+            Kami adalah yayasan yang berdedikasi untuk meningkatkan kesejahteraan masyarakat melalui
+            program-program wakaf yang berkelanjutan. Dengan bantuan dari para dermawan dan donatur,
+            kami terus berupaya memberikan kontribusi positif bagi komunitas Sumenep dan sekitarnya.
           </p>
           <div class="social-links d-flex mt-4">
             <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
@@ -43,35 +46,29 @@ export default {
         </div>
 
         <div class="col-lg-2 col-6 footer-links">
-          <h4>Useful Links</h4>
-          <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">About us</a></li>
-            <li><a href="#">Services</a></li>
-            <li><a href="#">Terms of service</a></li>
-            <li><a href="#">Privacy policy</a></li>
-          </ul>
+          <h4>Bagaimana Anda Dapat Berkontribusi</h4>
+          <p>
+            Dengan berwakaf atau menyumbangkan dana, Anda turut berpartisipasi dalam memajukan
+            kesejahteraan masyarakat.
+          </p>
         </div>
 
         <div class="col-lg-2 col-6 footer-links">
-          <h4>Our Services</h4>
+          <h4>Program Wakaf</h4>
           <ul>
-            <li><a href="#">Web Design</a></li>
-            <li><a href="#">Web Development</a></li>
-            <li><a href="#">Product Management</a></li>
-            <li><a href="#">Marketing</a></li>
-            <li><a href="#">Graphic Design</a></li>
+            <li><a href="#">Penyaluran bantuan wakaf</a></li>
+            <li><a href="#">Penyewaan aset yayasan</a></li>
           </ul>
         </div>
 
         <div class="col-lg-3 col-md-12 footer-contact text-center text-md-start">
-          <h4>Contact Us</h4>
+          <h4>Hubungi Kami</h4>
           <p>
-            A108 Adam Street <br />
-            New York, NY 535022<br />
-            United States <br /><br />
-            <strong>Phone:</strong> +1 5589 55488 55<br />
-            <strong>Email:</strong> info@example.com<br />
+            Kota Sumenep <br />
+            Kabupaten Sumenep,69415<br />
+            Jawa Timur <br /><br />
+            <strong>Phone:</strong> +62 85 555 555<br />
+            <strong>Email:</strong> info@sumolo.com<br />
           </p>
         </div>
       </div>
@@ -79,15 +76,8 @@ export default {
 
     <div class="container mt-4">
       <div class="copyright">
-        &copy; Copyright <strong><span>Impact</span></strong
+        &copy; Copyright <strong><span>Penambahan Sumolo</span></strong
         >. All Rights Reserved
-      </div>
-      <div class="credits">
-        <!-- All the links in the footer should remain intact. -->
-        <!-- You can delete the links only if you purchased the pro version. -->
-        <!-- Licensing information: https://bootstrapmade.com/license/ -->
-        <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/impact-bootstrap-business-website-template/ -->
-        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
       </div>
     </div>
   </footer>

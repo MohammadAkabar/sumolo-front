@@ -2,9 +2,11 @@ import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../views/HomePage.vue'
 import About from '../views/AboutPage.vue'
 import Login from '../views/LoginPage.vue'
+import Register from '../views/RegisterPage.vue'
 import Dashboard from '../views/Dashboard.vue'
 import AssetDetail from '../components/Items/AssetDetail.vue'
 import AssetsPage from '../views/AssetsPage.vue'
+import ProfilePage from '../views/ProfilePage.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -16,6 +18,10 @@ const router = createRouter({
     {
       path: '/About',
       component: About
+    },
+    {
+      path: '/Register',
+      component: Register
     },
     {
       path: '/login',
@@ -32,6 +38,10 @@ const router = createRouter({
     {
       path: '/all-assets',
       component: AssetsPage
+    },
+    {
+      path: '/Profile',
+      component: ProfilePage
     }
   ]
 })
@@ -49,7 +59,7 @@ router.beforeEach((to, _, next) => {
 
   if (isLogin && to.path === '/Login') {
     next('/')
-  } else if (!isLogin && to.path !== '/Login') {
+  } else if (!isLogin && to.path !== '/Login' && to.path !== '/Register') {
     next('/login')
   } else {
     next()

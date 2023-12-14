@@ -42,7 +42,7 @@ export default {
     <!-- /.row -->
 
     <!-- Related Projects Row -->
-    <h3 class="my-4">Related Projects</h3>
+    <h3 class="my-4">Gambar</h3>
 
     <div class="row">
       <div class="col-md-3 col-sm-6 mb-4">
