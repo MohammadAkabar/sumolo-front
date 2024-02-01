@@ -4,7 +4,8 @@ import axios from 'axios'
 export const useAssetStore = defineStore('asset', {
   state: () => ({
     dataAsset: [],
-    dataAssetById: {}
+    dataAssetById: {},
+    dataUserAssets: []
   }),
 
   actions: {
@@ -23,6 +24,22 @@ export const useAssetStore = defineStore('asset', {
       }
     },
 
+    async fetchUserAsset() {
+      try {
+        const id = localStorage.getItem('id')
+        const { data } = await axios({
+          method: 'GET',
+          url: `http://localhost:3000/assets/user/${id}`,
+          headers: {
+            access_token: localStorage.getItem('access_token')
+          }
+        })
+        this.dataUserAssets = data.datas
+      } catch (error) {
+        console.log(error)
+      }
+    },
+
     async fetchAssetById(id) {
       try {
         const { data } = await axios({
@@ -32,10 +49,9 @@ export const useAssetStore = defineStore('asset', {
             access_token: localStorage.getItem('access_token')
           }
         })
-        this.dataAssetById = data
-        console.log(this.dataAssetById);
+        this.dataAssetById = data.datas
       } catch (error) {
-        console.log(error);
+        console.log(error)
       }
     }
   }

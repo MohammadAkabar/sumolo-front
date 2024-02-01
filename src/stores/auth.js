@@ -61,10 +61,10 @@ export const useAuthStore = defineStore('auth', {
         this.role = localStorage.getItem('role')
         this.id = localStorage.getItem('id')
         this.router.push('/')
-        // Swal.fire({
-        //   icon: 'success',
-        //   text: 'Loggin Success'
-        // })
+        Swal.fire({
+          icon: 'success',
+          text: 'Loggin Success'
+        })
       } catch (error) {
         // Swal.fire({
         //   icon: 'error',

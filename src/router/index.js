@@ -7,6 +7,7 @@ import Dashboard from '../views/Dashboard.vue'
 import AssetDetail from '../components/Items/AssetDetail.vue'
 import AssetsPage from '../views/AssetsPage.vue'
 import ProfilePage from '../views/ProfilePage.vue'
+import UserAssets from '../views/UserAssets.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -40,7 +41,11 @@ const router = createRouter({
       component: AssetsPage
     },
     {
-      path: '/Profile',
+      path: '/assets/user/:id',
+      component: UserAssets
+    },
+    {
+      path: '/profile/:id',
       component: ProfilePage
     }
   ]

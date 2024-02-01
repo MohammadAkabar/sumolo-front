@@ -1,18 +1,28 @@
 <script>
-export default {}
+import { mapActions, mapWritableState } from 'pinia'
+import { useUserStore } from '../stores/users'
+
+export default {
+  computed: {
+    ...mapWritableState(useUserStore, ['dataUserById'])
+  },
+  methods: {
+    ...mapActions(useUserStore, ['fetchDataUserById'])
+  },
+  created() {
+    this.fetchDataUserById(this.$route.params.id)
+  }
+}
 </script>
 <template>
   <div class="container rounded bg-white mt-5 mb-5">
     <div class="row">
       <div class="col-md-3 border-right">
         <div class="d-flex flex-column align-items-center text-center p-3 py-5">
-          <img
-            class="rounded-circle mt-5"
-            width="150px"
-            src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"
-            alt=""
-          /><span class="font-weight-bold">Edogaru</span
-          ><span class="text-black-50">edogaru@mail.com.my</span><span> </span>
+          <img class="rounded-circle mt-5" width="150px" :src="dataUserById.image" alt="" />
+          <span class="font-weight-bold">{{ dataUserById.name }}</span
+          ><span class="text-black-50">{{ dataUserById.email }}</span
+          ><span> </span>
         </div>
       </div>
       <div class="col-md-5 border-right">
@@ -23,20 +33,25 @@ export default {}
           <div class="row mt-2">
             <div class="col-md-6">
               <label class="labels">Name</label
-              ><input type="text" class="form-control" placeholder="first name" value="" />
+              ><input type="text" class="form-control" :placeholder="dataUserById.name" value="" />
             </div>
           </div>
           <div class="row mt-3">
             <div class="col-md-12">
               <label class="labels">Mobile Number</label
-              ><input type="text" class="form-control" placeholder="enter phone number" value="" />
+              ><input
+                type="text"
+                class="form-control"
+                :placeholder="dataUserById.phone_number"
+                value=""
+              />
             </div>
             <div class="col-md-12">
               <label class="labels">Address</label
               ><input
                 type="text"
                 class="form-control"
-                placeholder="enter address line 1"
+                :placeholder="dataUserById.address"
                 value=""
               />
             </div>
