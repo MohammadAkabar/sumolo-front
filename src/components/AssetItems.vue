@@ -57,7 +57,8 @@ export default {
   },
 
   created() {
-    this.fetchDataAsset(), this.fetchUserAsset()
+    this.fetchDataAsset()
+    this.fetchUserAsset()
   }
 }
 </script>

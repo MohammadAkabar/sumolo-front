@@ -26,7 +26,12 @@ export default {
     }
   },
   methods: {
-    ...mapActions(useAuthStore, ['logout'])
+    ...mapActions(useAuthStore, ['logout']),
+    navigateToUserProfile() {
+      const uID = localStorage.id
+
+      this.$router.push(`/profile/${uID}`)
+    }
   }
 }
 </script>
@@ -56,21 +61,15 @@ export default {
             <router-link to="/Login"> <a href="" v-if="!token">Login</a> </router-link>
             <a href="" v-if="token" @click.prevent="logout">Logout</a>
           </li>
-          <li>
-            <a href="#contact" v-if="role === 'User'" @click.prevent="logout">User Menu</a>
+          <!-- <li>
+            <a href="" v-if="role === 'User'" @click.prevent="logout">User Menu</a>
+          </li> -->
+          <li class="user-profile cursor-pointer" @click="navigateToUserProfile">
+            <a href="">
+              <img src="../assets/img/user/user.jpg" alt="User Profile Image" />
+            </a>
           </li>
         </ul>
-        <div class="notifications">
-          <ul>
-            <li v-for="notification in notifications" :key="notification.id">
-              {{ notification.message }}
-            </li>
-          </ul>
-        </div>
-
-        <div class="user-profile">
-          <img :src="userProfileImage" alt="User Profile Image" v-if="userProfileImage" />
-        </div>
       </nav>
       <!-- .navbar -->
 

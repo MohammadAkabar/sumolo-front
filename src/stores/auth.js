@@ -11,8 +11,6 @@ export const useAuthStore = defineStore('auth', {
   actions: {
     async login(form) {
       try {
-        console.log(form)
-
         const { data } = await axios({
           method: 'POST',
           url: 'http://localhost:3000/auth/login', //url backend
@@ -75,7 +73,6 @@ export const useAuthStore = defineStore('auth', {
         console.log(error)
       }
     },
-    
 
     async logout() {
       localStorage.clear()

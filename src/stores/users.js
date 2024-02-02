@@ -35,6 +35,34 @@ export const useUserStore = defineStore('user', {
       } catch (error) {
         console.log(error)
       }
+    },
+
+    async updateProfile(form) {
+      try {
+        const id = localStorage.getItem('id')
+        const { data } = await axios({
+          method: 'PUT',
+          url: `http://localhost:3000/user/${id}`,
+          data: form,
+          headers: {
+            access_token: localStorage.getItem('access_token')
+          }
+        })
+        this.dataUpdatedUser = data.datas
+        this.router.push(`/profile/${id}`)
+        Swal.fire({
+          icon: 'success',
+          text: 'Berhasil mengupdate profile'
+        })
+      } catch (error) {
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Gagal mengupdate profile',
+          footer: '<a href="">Why do I have this issue?</a>'
+        })
+        console.log(error)
+      }
     }
   }
 })
