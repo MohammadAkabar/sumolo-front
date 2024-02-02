@@ -53,6 +53,30 @@ export const useAssetStore = defineStore('asset', {
       } catch (error) {
         console.log(error)
       }
+    },
+
+    async requestAsset(id) {
+      try {
+        const { data } = await axios({
+          method: 'POST',
+          url: `http://localhost:3000/assets/request/${id}`, //url backend
+          headers: {
+            access_token: localStorage.getItem('access_token')
+          }
+        })
+        this.dataRequestAsset = data.datas
+        this.router.push(`/DetailAsset/${id}`)
+        swal.fire({
+          icon: 'success',
+          text: 'Request Success, wait for response'
+        })
+      } catch (error) {
+        swal.fire({
+          icon: 'success',
+          text: 'Request Success, wait for response'
+        })
+        console.log(error)
+      }
     }
   }
 })

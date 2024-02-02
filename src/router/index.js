@@ -8,6 +8,7 @@ import AssetDetail from '../components/Items/AssetDetail.vue'
 import AssetsPage from '../views/AssetsPage.vue'
 import ProfilePage from '../views/ProfilePage.vue'
 import UserAssets from '../views/UserAssets.vue'
+import EditAsset from '../views/EditAsset.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -47,6 +48,10 @@ const router = createRouter({
     {
       path: '/profile/:id',
       component: ProfilePage
+    },
+    {
+      path: '/EditAsset/:id',
+      component: EditAsset
     }
   ]
 })

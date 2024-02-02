@@ -78,11 +78,11 @@ export default {
         >
           <article>
             <div class="post-img">
-              <img :src="item.image" alt="" class="img-fluid" />
+              <img src="../assets/img/user/default.jpg" alt="" class="img-fluid" />
             </div>
             <p class="post-category"></p>
             <h2 class="title">
-              <a href="blog-details.html">{{ item.name }}</a>
+              <a href="">{{ item.name }}</a>
             </h2>
             <div class="d-flex align-items-center">
               <img
@@ -116,7 +116,7 @@ export default {
         <div v-for="(item, index) in formattedDataAsset" :key="index" class="col-xl-4 col-md-6">
           <article>
             <div class="post-img">
-              <img :src="item.image" alt="" class="img-fluid" />
+              <img src="../assets/img/user/default.jpg" alt="" class="img-fluid" />
             </div>
             <p class="post-category"></p>
             <h2 class="title">
@@ -138,7 +138,7 @@ export default {
                   @click.prevent="this.$router.push(`/DetailAsset/${item.id}`)"
                   class="btn btn-primary"
                 >
-                  Detail {{ item.id }}
+                  Detail aset
                 </button>
               </div>
             </div>
@@ -155,7 +155,7 @@ export default {
         >
           <article>
             <div class="post-img">
-              <img :src="item.image" alt="" class="img-fluid" />
+              <img src="../assets/img/user/default.jpg" alt="" class="img-fluid" />
             </div>
             <p class="post-category"></p>
             <h2 class="title">
@@ -177,7 +177,7 @@ export default {
                   @click.prevent="this.$router.push(`/DetailAsset/${item.id}`)"
                   class="btn btn-primary"
                 >
-                  Detail {{ item.id }}
+                  Detail aset
                 </button>
               </div>
             </div>
