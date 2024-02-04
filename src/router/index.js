@@ -9,6 +9,11 @@ import AssetsPage from '../views/AssetsPage.vue'
 import ProfilePage from '../views/ProfilePage.vue'
 import UserAssets from '../views/UserAssets.vue'
 import EditAsset from '../views/EditAsset.vue'
+import RegisterAsset from '../views/RegisterAsset.vue'
+import WildcardPage from '../components/WildcardPage.vue'
+import UsersData from '../views/DashboardUsersContent.vue'
+import AssetsData from '../views/DashboardAssetsContent.vue'
+import WakafData from '../views/DashboardWakafsContent.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -16,6 +21,10 @@ const router = createRouter({
     {
       path: '/',
       component: Home
+    },
+    {
+      path: '/:catchAll(.*)',
+      component: WildcardPage
     },
     {
       path: '/About',
@@ -29,10 +38,10 @@ const router = createRouter({
       path: '/login',
       component: Login
     },
-    {
-      path: '/Admin',
-      component: Dashboard
-    },
+    // {
+    //   path: '/Admin',
+    //   component: Dashboard
+    // },
     {
       path: '/DetailAsset/:id',
       component: AssetDetail
@@ -47,15 +56,48 @@ const router = createRouter({
     },
     {
       path: '/profile/:id',
-      component: ProfilePage
+      component: ProfilePage,
+      beforeEnter: (to, from, next) => {
+        const isLoggingUID = localStorage.getItem('id')
+        const paramsUID = to.params.id
+
+        if (isLoggingUID === paramsUID) {
+          next()
+        } else {
+          next('/not-authorized')
+        }
+      }
     },
     {
       path: '/EditAsset/:id',
       component: EditAsset
+    },
+    {
+      path: '/register-asset',
+      component: RegisterAsset
+    },
+    {
+      path: '/admin-dashboard',
+      component: Dashboard
+    },
+    {
+      path: '/admin/users',
+      component: UsersData
+    },
+    {
+      path: '/admin/assets',
+      component: AssetsData
+    },
+
+    {
+      path: '/admin/wakafs',
+      component: WakafData
     }
   ]
 })
 //to Url, from url,next url
+// ...
+
 router.beforeEach((to, _, next) => {
   //navguard
   const isLogin = !!localStorage.getItem('access_token')
@@ -67,13 +109,14 @@ router.beforeEach((to, _, next) => {
     document.title = 'Sumolo'
   }
 
-  if (isLogin && to.path === '/Login') {
+  if (isLogin && to.path === '/login') {
     next('/')
-  } else if (!isLogin && to.path !== '/Login' && to.path !== '/Register') {
+  } else if (!isLogin && to.path !== '/login' && to.path !== '/Register') {
     next('/login')
   } else {
     next()
   }
 })
+// ...
 
 export default router

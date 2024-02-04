@@ -81,7 +81,6 @@ export default {
                         class="form-control form-control-lg"
                         id="image"
                       />
-
                       <label for="image" class="form-label">Image</label>
                     </div>
                   </div>

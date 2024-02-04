@@ -1,5 +1,17 @@
 <script>
-export default {}
+import { mapActions, mapWritableState } from 'pinia'
+import { useAssetStore } from '../stores/assets'
+export default {
+  computed: {
+    ...mapWritableState(useAssetStore, ['dataAssetById'])
+  },
+  methods: {
+    ...mapActions(useAssetStore, ['fetchAssetById'])
+  },
+  created() {
+    this.fetchAssetById(this.$route.params.id)
+  }
+}
 </script>
 
 <template>

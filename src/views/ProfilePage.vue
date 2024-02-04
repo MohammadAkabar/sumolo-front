@@ -59,50 +59,89 @@ export default {
             <h4 class="text-right">Profile Settings</h4>
           </div>
           <form @submit.prevent="doUpdatedUser">
-            <div class="row mt-2">
-              <div class="col-md-6">
-                <label class="labels">Name</label
-                ><input
-                  v-model="form.name"
-                  type="text"
-                  class="form-control"
-                  :placeholder="dataUserById.name"
-                />
-              </div>
-              <div class="col-md-7">
-                <label class="labels">Email</label
-                ><input
-                  v-model="dataUserById.email"
-                  type="text"
-                  class="form-control"
-                  :placeholder="dataUserById.email"
-                />
-              </div>
+            <div class="mb-3">
+              <label class="form-label labels">Name</label>
+              <input
+                v-model="form.name"
+                type="text"
+                class="form-control"
+                :placeholder="dataUserById.name"
+              />
             </div>
-            <div class="row mt-3">
-              <div class="col-md-12">
-                <label class="labels">Mobile Number</label
-                ><input
-                  v-model="form.phoneNumber"
-                  type="text"
-                  class="form-control"
-                  :placeholder="dataUserById.phone_number"
-                />
-              </div>
-              <div class="col-md-12">
-                <label class="labels">Address</label
-                ><input
-                  v-model="form.address"
-                  type="text"
-                  class="form-control"
-                  :placeholder="dataUserById.address"
-                />
-              </div>
+            <div class="mb-3">
+              <label class="form-label labels">Email</label>
+              <input
+                v-model="dataUserById.email"
+                type="text"
+                class="form-control"
+                :placeholder="dataUserById.email"
+                disabled
+              />
             </div>
-            <button type="submit" class="btn btn-primary btn-block mt-5">Update profile</button>
+            <div class="mb-3">
+              <label class="form-label labels">Mobile Number</label>
+              <input
+                v-model="form.phoneNumber"
+                type="text"
+                class="form-control"
+                :placeholder="dataUserById.phone_number"
+              />
+            </div>
+            <div class="mb-3">
+              <label class="form-label labels">Address</label>
+              <input
+                v-model="form.address"
+                type="text"
+                class="form-control"
+                :placeholder="dataUserById.address"
+              />
+            </div>
+            <button type="submit" class="btn btn-primary btn-block mt-4">Update Profile</button>
           </form>
         </div>
       </div>
     </div>
   </div>
 </template>
+
+<style scoped>
+.container {
+  background-color: #f8f9fa;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.col-md-3 {
+  border-right: 1px solid #dee2e6;
+}
+
+.card {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+
+.labels {
+  font-weight: bold;
+}
+
+.form-label {
+  color: #007bff;
+}
+
+.form-control {
+  border: 1px solid #ced4da;
+  border-radius: 5px;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+  border-color: #0056b3;
+}
+</style>

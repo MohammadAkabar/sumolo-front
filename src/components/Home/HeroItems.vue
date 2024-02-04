@@ -31,23 +31,28 @@ export default {}
       <div class="container position-relative">
         <div class="row gy-4 mt-5">
           <div class="col-xl-3 col-md-6" data-aos="fade-up" data-aos-delay="100">
-            <div class="icon-box">
+            <div class="icon-box custom-icon-box">
               <div class="icon"><i class="bi bi-building"></i></div>
-              <h4 class="title"><a href="#recent-posts" class="stretched-link">Asset</a></h4>
+              <h4 class="title">
+                <router-link to="/register-asset"
+                  ><a href="" class="stretched-link">Asset</a></router-link
+                >
+              </h4>
             </div>
           </div>
           <!--End Icon Box -->
 
           <div class="col-xl-3 col-md-6" data-aos="fade-up" data-aos-delay="200">
-            <div class="icon-box">
+            <div class="icon-box custom-icon-box">
               <div class="icon"><i class="bi bi-gem"></i></div>
               <h4 class="title"><a href="" class="stretched-link">Wakaf</a></h4>
             </div>
           </div>
+
           <!--End Icon Box -->
 
           <div class="col-xl-3 col-md-6" data-aos="fade-up" data-aos-delay="300">
-            <div class="icon-box">
+            <div class="icon-box custom-icon-box">
               <div class="icon"><i class="bi bi-geo-alt"></i></div>
               <h4 class="title"><a href="" class="stretched-link">Lokasi</a></h4>
             </div>
@@ -55,7 +60,7 @@ export default {}
           <!--End Icon Box -->
 
           <div class="col-xl-3 col-md-6" data-aos="fade-up" data-aos-delay="500">
-            <div class="icon-box">
+            <div class="icon-box custom-icon-box">
               <div class="icon"><i class="bi bi-command"></i></div>
               <h4 class="title"><a href="#about" class="stretched-link">About us</a></h4>
             </div>
@@ -67,3 +72,18 @@ export default {}
   </section>
   <!-- End Hero Section -->
 </template>
+
+<style scoped>
+.custom-icon-box {
+  background-color: #1870cf; /* Warna biru asli yang telah disebutkan sebelumnya */
+  color: #fff; /* Warna teks putih agar kontras */
+  /* padding: 20px; Atur padding sesuai kebutuhan Anda */
+  border-radius: 10px; /* Tambahkan border-radius untuk tampilan lebih lembut */
+  text-align: center; /* Pusatkan teks */
+  transition: background-color 0.3s ease; /* Efek transisi untuk perubahan warna latar belakang */
+}
+
+.custom-icon-box:hover {
+  background-color: #2980b9; /* Warna biru saat dihover */
+}
+</style>

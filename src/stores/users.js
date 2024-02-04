@@ -1,5 +1,6 @@
 import { defineStore } from 'pinia'
 import axios from 'axios'
+const URL_BACK_END = import.meta.env.VITE_BACK_END_URL
 
 export const useUserStore = defineStore('user', {
   state: () => ({
@@ -11,7 +12,7 @@ export const useUserStore = defineStore('user', {
       try {
         const { data } = await axios({
           method: 'GET',
-          url: 'http://localhost:3000/users/', //url backend
+          url: `${URL_BACK_END}/users`, //url backend
           headers: {
             access_token: localStorage.getItem('access_token')
           }
@@ -25,13 +26,12 @@ export const useUserStore = defineStore('user', {
       try {
         const { data } = await axios({
           method: 'GET',
-          url: `http://localhost:3000/user/${id}`, //url backend
+          url: `${URL_BACK_END}/user/${id}`, //url backend
           headers: {
             access_token: localStorage.getItem('access_token')
           }
         })
         this.dataUserById = data.datas
-        console.log(this.dataUserById)
       } catch (error) {
         console.log(error)
       }
@@ -42,7 +42,7 @@ export const useUserStore = defineStore('user', {
         const id = localStorage.getItem('id')
         const { data } = await axios({
           method: 'PUT',
-          url: `http://localhost:3000/user/${id}`,
+          url: `${URL_BACK_END}/user/${id}`,
           data: form,
           headers: {
             access_token: localStorage.getItem('access_token')
