@@ -4,17 +4,35 @@ import { useAuthStore } from '../stores/auth'
 
 export default {
   data() {
-    // local variables
     return {
       form: {
         email: '',
         password: ''
+      },
+      errors: {} // Objek untuk menyimpan pesan kesalahan validasi
+    }
+  },
+  watch: {
+    'form.email'(newVal) {
+      // Validasi email
+      if (newVal === '') {
+        this.errors.emailMsg = 'Email tidak boleh kosong'
+      } else if (!newVal.match(/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/)) {
+        this.errors.emailMsg = 'Format email salah'
+      } else {
+        this.errors.emailMsg = true
+      }
+    },
+    'form.password'(newVal) {
+      // Validasi password
+      if (newVal === '') {
+        this.errors.passwordMsg = 'Password tidak boleh kosong'
+      } else {
+        this.errors.passwordMsg = true
       }
     }
   },
-  computed: {
-    //globalVariables yang ada e store
-  },
+
   methods: {
     ...mapActions(useAuthStore, ['login']),
     doLogin() {
@@ -35,13 +53,13 @@ export default {
             <span class="input-group-text"><i class="fas fa-envelope"></i></span>
             <input
               v-model="form.email"
-              type="email"
-              class="form-control"
+              type="text"
+              :class="errors.emailMsg !== true ? 'form-control error-form' : 'form-control'"
               id="email"
               placeholder="you@example.com"
-              required
             />
           </div>
+          <span v-show="errors.emailMsg != true" class="error-msg">{{ errors.emailMsg }}</span>
         </div>
 
         <div class="mb-3">
@@ -51,10 +69,9 @@ export default {
             <input
               v-model="form.password"
               type="password"
-              class="form-control"
+              :class="errors.passwordMsg !== true ? 'form-control error-form' : 'form-control'"
               id="password"
               placeholder="Password"
-              required
             />
           </div>
         </div>
@@ -72,6 +89,10 @@ export default {
 </template>
 
 <style scoped>
+.error-msg {
+  display: block;
+  color: red;
+}
 .link-secondary {
   color: #6c757d;
 }
@@ -99,6 +120,13 @@ export default {
 
 .form-control:focus {
   box-shadow: 0 0 10px rgba(0, 123, 255, 0.6);
+}
+
+.error-form {
+  transition: box-shadow 0.3s;
+}
+.error-form:focus {
+  box-shadow: 0 0 10px rgba(255, 39, 60, 0.6);
 }
 
 .btn.btn-primary {

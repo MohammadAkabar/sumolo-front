@@ -6,7 +6,8 @@ export const useAssetStore = defineStore('asset', {
   state: () => ({
     dataAsset: [],
     dataAssetById: {},
-    dataUserAssets: []
+    dataUserAssets: [],
+    dataAllWakaf: []
   }),
 
   actions: {
@@ -54,6 +55,10 @@ export const useAssetStore = defineStore('asset', {
       } catch (error) {
         console.log(error)
       }
+    },
+
+    async editAsset(id) {
+
     },
 
     async requestAsset(id) {
@@ -183,6 +188,7 @@ export const useAssetStore = defineStore('asset', {
           }
         })
         this.dataAllWakaf = data.datas
+        this.router.push('/admin/wakafs')
       } catch (error) {
         console.log(error)
       }

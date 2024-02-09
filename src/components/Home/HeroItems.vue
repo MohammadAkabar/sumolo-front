@@ -12,7 +12,9 @@ export default {}
           <h2>Welcome to <span>Sumolo App</span></h2>
           <p>Pembayaran online penyewaan aset wakaf pada penambahan sumolo.</p>
           <div class="d-flex justify-content-center justify-content-lg-start">
-            <a href="#about" class="btn-get-started">Get Started</a>
+            <router-link to="/register-asset">
+              <a href="" class="btn-get-started">Get Started</a>
+            </router-link>
           </div>
         </div>
         <div class="col-lg-6 order-1 order-lg-2">
@@ -35,17 +37,25 @@ export default {}
               <div class="icon"><i class="bi bi-building"></i></div>
               <h4 class="title">
                 <router-link to="/register-asset"
-                  ><a href="" class="stretched-link">Asset</a></router-link
+                  ><a href="" class="stretched-link">Daftar Aset</a></router-link
                 >
               </h4>
             </div>
           </div>
           <!--End Icon Box -->
 
-          <div class="col-xl-3 col-md-6" data-aos="fade-up" data-aos-delay="200">
+          <div
+            class="col-xl-3 col-md-6"
+            data-aos="fade-up"
+            data-aos-delay="200"
+            @click="navigateToUserProfile"
+          >
             <div class="icon-box custom-icon-box">
               <div class="icon"><i class="bi bi-gem"></i></div>
-              <h4 class="title"><a href="" class="stretched-link">Wakaf</a></h4>
+
+              <h4 class="title">
+                <a href="/all-assets" class="stretched-link">Lihat Aset</a>
+              </h4>
             </div>
           </div>
 
@@ -54,7 +64,13 @@ export default {}
           <div class="col-xl-3 col-md-6" data-aos="fade-up" data-aos-delay="300">
             <div class="icon-box custom-icon-box">
               <div class="icon"><i class="bi bi-geo-alt"></i></div>
-              <h4 class="title"><a href="" class="stretched-link">Lokasi</a></h4>
+              <h4 class="title">
+                <a
+                  href="https://www.google.com/maps/place/7%C2%B000'24.8%22S+113%C2%B051'54.0%22E/@-7.0068702,113.8624081,17z/data=!3m1!4b1!4m4!3m3!8m2!3d-7.0068755!4d113.8649884?entry=ttu"
+                  class="stretched-link"
+                  >Lokasi</a
+                >
+              </h4>
             </div>
           </div>
           <!--End Icon Box -->

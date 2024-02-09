@@ -7,13 +7,13 @@ export const useAuthStore = defineStore('auth', {
   state: () => ({
     token: null,
     role: null,
-    id: null
+    id: null,
+    datasLogin: null
   }),
 
   actions: {
     async login(form) {
       try {
-        console.log(form)
         const { data } = await axios({
           headers: {
             'Content-Type': 'application/json'
@@ -25,6 +25,7 @@ export const useAuthStore = defineStore('auth', {
         this.token = data.datas.access_token
         this.role = data.datas.role
         this.id = data.datas.user_id
+        this.datasLogin = data.datas
         localStorage.setItem('access_token', this.token)
         localStorage.setItem('role', this.role)
         localStorage.setItem('id', this.id)
@@ -35,13 +36,7 @@ export const useAuthStore = defineStore('auth', {
             icon: 'success',
             title: 'Login Successful!',
             text: 'Welcome back admin!',
-            confirmButtonText: 'OK',
-            showClass: {
-              popup: 'animate__animated animate__fadeInDown'
-            },
-            hideClass: {
-              popup: 'animate__animated animate__fadeOutUp'
-            }
+            confirmButtonText: 'OK'
           })
         } else {
           this.router.push('/')
@@ -49,23 +44,30 @@ export const useAuthStore = defineStore('auth', {
             icon: 'success',
             title: 'Login Successful!',
             text: 'Welcome back!',
-            confirmButtonText: 'OK',
-            showClass: {
-              popup: 'animate__animated animate__fadeInDown'
-            },
-            hideClass: {
-              popup: 'animate__animated animate__fadeOutUp'
-            }
+            confirmButtonText: 'OK'
           })
         }
       } catch (error) {
-        Swal.fire({
-          icon: 'error',
-          title: 'Oops...',
-          text: 'Wrong Email/Password ',
-          footer: `${error.message}`
-        })
-        console.error(error)
+        if (error.response.data.message === 'Email and Password Required') {
+          Swal.fire({
+            icon: 'error',
+            title: 'Gagal login',
+            text: 'Email dan password tidak boleh kosong!'
+          })
+        } else if (error.response.data.message === 'Email not registered') {
+          Swal.fire({
+            icon: 'error',
+            title: 'Gagal login',
+            text: 'Email tidak terdaftar!'
+          })
+        } else if (error.response.data.message === 'Wrong Password') {
+          Swal.fire({
+            icon: 'error',
+            title: 'Gagal login',
+            text: 'Password salah!'
+          })
+        }
+        console.error(error.response)
       }
     },
 
@@ -88,11 +90,9 @@ export const useAuthStore = defineStore('auth', {
       } catch (error) {
         Swal.fire({
           icon: 'error',
-          title: 'Oops...',
-          text: 'Wrong Email/Password ',
-          footer: '<a href="">Why do I have this issue?</a>'
+          title: `${error.response.data.message}`,
+          text: `Gagal Register`
         })
-        console.log(error)
       }
     },
 

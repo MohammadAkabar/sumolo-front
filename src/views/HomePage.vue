@@ -9,7 +9,8 @@ export default {
     Hero,
     AboutSection,
     AssetItems
-  }
+  },
+  
 }
 </script>
 
@@ -22,6 +23,7 @@ export default {
   <main id="main">
     <AssetItems :isAll="false" />
   </main>
+
   <!-- End #main -->
 
   <!-- ======= Footer ======= -->

@@ -45,7 +45,7 @@ export default {
 <template>
   <header v-if="token" id="header" class="header d-flex align-items-center">
     <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
-      <a href="index.html" class="logo d-flex align-items-center">
+      <a href="/" class="logo d-flex align-items-center">
         <h1>Sumolo<span>.</span></h1>
       </a>
       <nav id="navbar" class="navbar">
@@ -57,9 +57,6 @@ export default {
             ></a>
             <ul>
               <li><a :href="`/assets/user/${id}`">My Asset</a></li>
-              <li><a href="#">Wakaf</a></li>
-              <li><a href="#">Pembayaran</a></li>
-              <li><a href="#">Blog</a></li>
             </ul>
           </li>
 

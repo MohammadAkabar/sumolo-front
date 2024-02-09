@@ -16,7 +16,6 @@ export default {
   created() {
     // getthisyeartime
     this.fetchAllWakaf(2022)
-    console.log(this.dataAllWakaf)
   }
 }
 </script>
@@ -58,56 +57,21 @@ export default {
                 <th>Alamat</th>
                 <th>Jumlah Wakaf</th>
                 <th>Status</th>
-                <th>Tanggal Pendaftaran</th>
                 <th>Aksi</th>
               </tr>
             </thead>
             <tbody>
               <!-- Loop melalui dataAsset -->
               <tr v-for="(penerima, index) in dataAllWakaf" :key="index">
+                <td>{{ penerima.id }}</td>
                 <td>{{ penerima.name }}</td>
                 <td>{{ penerima.address }}</td>
                 <td>{{ penerima.amount }}</td>
                 <td>{{ penerima.is_active }}</td>
-                <td>sdasdasd</td>
                 <td></td>
                 <td>
-                  <div v-if="!isAssetsManagementPage">
-                    <!-- Tombol untuk menerima request -->
-                    <button
-                      v-if="request.Recipes && request.Recipes.length > 0"
-                      :class="{
-                        'btn btn-success me-2': request.Recipes[0].is_active === 'true',
-                        'btn btn-warning me-2': request.Recipes[0].is_active === 'waiting'
-                      }"
-                      type="button"
-                      @click="
-                        request.Recipes[0].is_active === 'waiting' ? doAccepted(request.id) : null
-                      "
-                    >
-                      {{
-                        request.Recipes[0].is_active === 'true'
-                          ? 'Sudah Validasi'
-                          : request.Recipes[0].is_active === 'waiting'
-                          ? 'Menunggu Validasi'
-                          : 'Validasi Aset'
-                      }}
-                    </button>
-
-                    <!-- Tombol Validasi Aset -->
-                    <button
-                      v-else="request.Recipes === undefined"
-                      class="btn btn-danger me-2"
-                      type="submit"
-                    >
-                      Belum Validasi
-                    </button>
-                  </div>
-
-                  <div v-if="isAssetsManagementPage">
-                    <button class="btn btn-primary me-2">Edit</button>
-                    <button class="btn btn-danger" @click="doDelete(request.id)">Delete</button>
-                  </div>
+                  <button class="btn btn-primary me-2">Edit</button>
+                  <button class="btn btn-danger" @click="doDelete(request.id)">Delete</button>
                 </td>
               </tr>
             </tbody>

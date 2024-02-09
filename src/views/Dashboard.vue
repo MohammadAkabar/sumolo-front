@@ -9,7 +9,6 @@ export default {
 </script>
 <template>
   <div>
-
     <div class="container-fluid">
       <div class="row">
         <!-- Sidebar -->
@@ -30,23 +29,23 @@ export default {
               <div class="card bg-primary text-white">
                 <div class="card-body">
                   <h3>Total Aset</h3>
-                  <p class="display-4">100</p>
+                  <p class="display-4">55</p>
                 </div>
               </div>
             </div>
             <div class="col-md-4 mb-4">
               <div class="card bg-success text-white">
                 <div class="card-body">
-                  <h3>Total Wakaf</h3>
-                  <p class="display-4">50</p>
+                  <h3>User</h3>
+                  <p class="display-4">55</p>
                 </div>
               </div>
             </div>
             <div class="col-md-4 mb-4">
               <div class="card bg-info text-white">
                 <div class="card-body">
-                  <h3>Another Statistic</h3>
-                  <p class="display-4">75</p>
+                  <h3>Total wakaf</h3>
+                  <p class="display-4">322</p>
                 </div>
               </div>
             </div>

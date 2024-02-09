@@ -95,12 +95,17 @@ export default {
                   </p>
                 </div>
               </div>
-              <div class="card-footer">
+              <div class="d-flex align-items-center mb-3">
+                <i class="bi bi-star-fill me-1"></i>
+                <i class="bi bi-star-fill me-1"></i>
+                <i class="bi bi-star-fill me-1"></i>
+              </div>
+              <div class="card-footer d-flex align-items-center">
                 <button
                   @click.prevent="$router.push(`/DetailAsset/${item.id}`)"
-                  class="btn btn-primary"
+                  class="btn btn-primary align-it"
                 >
-                  Lihat Detail
+                  Lihat Detail Aset
                 </button>
               </div>
             </div>
@@ -128,7 +133,7 @@ export default {
               <h2 class="card-title">
                 <a href="">{{ item.name }}</a>
               </h2>
-              <div class="card-info d-flex align-items-center">
+              <div class="card-info d-flex justify-content-center">
                 <img src="../assets/img/blog/blog-author.jpg" alt="" class="img-fluid author-img" />
                 <div class="meta">
                   <p class="author">{{ item.User?.name }}</p>
@@ -138,7 +143,12 @@ export default {
                   </p>
                 </div>
               </div>
-              <div class="card-footer">
+              <div class="d-flex align-items-center mb-3">
+                <i class="bi bi-star-fill me-1"></i>
+                <i class="bi bi-star-fill me-1"></i>
+                <i class="bi bi-star-fill me-1"></i>
+              </div>
+              <div class="card-footer justify-content-center">
                 <button
                   @click.prevent="$router.push(`/DetailAsset/${item.id}`)"
                   class="btn btn-primary"
@@ -176,7 +186,12 @@ export default {
                   </p>
                 </div>
               </div>
-              <div class="card-footer">
+              <div class="d-flex align-items-center mb-3">
+                <i class="bi bi-star-fill me-1"></i>
+                <i class="bi bi-star-fill me-1"></i>
+                <i class="bi bi-star-fill me-1"></i>
+              </div>
+              <div class="card-footer d-flex justify-content-center">
                 <button
                   @click.prevent="$router.push(`/DetailAsset/${item.id}`)"
                   class="btn btn-primary"
@@ -191,6 +206,11 @@ export default {
       <!-- End asset cards -->
     </div>
   </section>
+  <div v-if="!ataUserAssets">
+    <h5 class="text-center">
+      <router-link to="/"> Anda belum punya aset silahkan daftar </router-link>
+    </h5>
+  </div>
 </template>
 
 <style scoped>

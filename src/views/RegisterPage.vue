@@ -43,6 +43,7 @@ export default {
                         v-model="form.name"
                         id="name"
                         class="form-control form-control-lg"
+                        required
                       />
                       <label class="form-label" for="name">Nama Lengkap</label>
                     </div>
@@ -55,6 +56,7 @@ export default {
                         v-model="form.email"
                         id="email"
                         class="form-control form-control-lg"
+                        required
                       />
                       <label class="form-label" for="email">email</label>
                     </div>
@@ -69,6 +71,7 @@ export default {
                         v-model="form.address"
                         class="form-control form-control-lg"
                         id="address"
+                        required
                       />
                       <label for="address" class="form-label">Alamat</label>
                     </div>
@@ -90,10 +93,11 @@ export default {
                   <div class="col-md-6 mb-4 pb-2">
                     <div class="form-outline">
                       <input
-                        type="number"
+                        type="text"
                         v-model="form.phoneNumber"
                         id="phoneNumber"
                         class="form-control form-control-lg"
+                        required
                       />
                       <label class="form-label" for="phoneNumber">Nomor HP</label>
                     </div>
