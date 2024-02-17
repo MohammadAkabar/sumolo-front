@@ -1,8 +1,11 @@
 <script>
 import { mapActions } from 'pinia'
 import { useAuthStore } from '../stores/auth'
+import useVuelidate from '@vuelidate/core'
+import { required, email, helpers } from '@vuelidate/validators'
 
 export default {
+  setup: () => ({ v$: useVuelidate() }),
   data() {
     return {
       form: {
@@ -12,31 +15,36 @@ export default {
       errors: {} // Objek untuk menyimpan pesan kesalahan validasi
     }
   },
-  watch: {
-    'form.email'(newVal) {
-      // Validasi email
-      if (newVal === '') {
-        this.errors.emailMsg = 'Email tidak boleh kosong'
-      } else if (!newVal.match(/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/)) {
-        this.errors.emailMsg = 'Format email salah'
-      } else {
-        this.errors.emailMsg = true
-      }
-    },
-    'form.password'(newVal) {
-      // Validasi password
-      if (newVal === '') {
-        this.errors.passwordMsg = 'Password tidak boleh kosong'
-      } else {
-        this.errors.passwordMsg = true
+
+  validations() {
+    return {
+      form: {
+        email: {
+          required: helpers.withMessage('Email tidak boleh kosong', required),
+          email: helpers.withMessage('Format email salah', email)
+        },
+        password: {
+          required: helpers.withMessage('Password tidak boleh kosong', required)
+        }
       }
     }
   },
 
   methods: {
     ...mapActions(useAuthStore, ['login']),
-    doLogin() {
-      this.login(this.form)
+    setTouched(field) {
+      if (field == 'email' || field == 'all') {
+        this.v$.form.email.$touch()
+      }
+      if (field == 'password' || field == 'all') {
+        this.v$.form.password.$touch()
+      }
+    },
+    async doLogin() {
+      this.setTouched('all')
+      if (!this.v$.$invalid) {
+        this.login(this.form)
+      }
     }
   }
 }
@@ -47,8 +55,9 @@ export default {
     <div class="card p-4" style="width: 400px; max-width: 100%">
       <h3 class="text-center mb-4">Login</h3>
       <form @submit.prevent="doLogin">
+        <!-- email -->
         <div class="mb-3">
-          <label for="email" class="form-label">Email address</label>
+          <label for="email" class="form-label">Masukkan Email</label>
           <div class="input-group">
             <span class="input-group-text"><i class="fas fa-envelope"></i></span>
             <input
@@ -56,12 +65,15 @@ export default {
               type="text"
               :class="errors.emailMsg !== true ? 'form-control error-form' : 'form-control'"
               id="email"
-              placeholder="you@example.com"
+              placeholder="nama@contoh.com"
             />
           </div>
-          <span v-show="errors.emailMsg != true" class="error-msg">{{ errors.emailMsg }}</span>
+          <span v-for="error of v$.form.email.$errors" class="text-danger">{{
+            error.$message
+          }}</span>
         </div>
 
+        <!-- password -->
         <div class="mb-3">
           <label for="password" class="form-label">Password</label>
           <div class="input-group">
@@ -74,6 +86,9 @@ export default {
               placeholder="Password"
             />
           </div>
+          <span v-for="error of v$.form.password.$errors" class="text-danger">{{
+            error.$message
+          }}</span>
         </div>
 
         <div class="mb-3">
@@ -89,10 +104,6 @@ export default {
 </template>
 
 <style scoped>
-.error-msg {
-  display: block;
-  color: red;
-}
 .link-secondary {
   color: #6c757d;
 }

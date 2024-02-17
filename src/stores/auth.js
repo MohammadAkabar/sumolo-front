@@ -35,7 +35,7 @@ export const useAuthStore = defineStore('auth', {
           Swal.fire({
             icon: 'success',
             title: 'Login Successful!',
-            text: 'Welcome back admin!',
+            text: 'Selamat Datang admin!',
             confirmButtonText: 'OK'
           })
         } else {
@@ -43,7 +43,7 @@ export const useAuthStore = defineStore('auth', {
           Swal.fire({
             icon: 'success',
             title: 'Login Successful!',
-            text: 'Welcome back!',
+            text: 'Selamat datang!',
             confirmButtonText: 'OK'
           })
         }

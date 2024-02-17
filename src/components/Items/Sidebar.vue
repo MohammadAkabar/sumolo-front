@@ -7,7 +7,9 @@ export default {}
     <div class="position-sticky">
       <ul class="nav flex-column pt-5 mt-5">
         <li class="nav-item">
-          <a class="nav-link active" href="#"> Dashboard </a>
+          <router-link to="/admin-dashboard">
+            <a class="nav-link active" href="#"> Dashboard </a>
+          </router-link>
         </li>
         <li class="nav-item">
           <router-link to="/admin/users">
